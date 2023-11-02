@@ -1,0 +1,32 @@
+int trig=9;
+int echo=8;
+int dist;
+int dura;
+void setup()
+{
+  pinMode(2, OUTPUT);
+  pinMode(trig,OUTPUT);
+  pinMode(echo,INPUT);
+  Serial.begin(9600);
+  digitalWrite(2,HIGH);
+}
+
+void loop()
+{
+digitalWrite(trig,HIGH);
+delay(20);
+digitalWrite(trig,LOW);
+
+dura=pulseIn(echo,HIGH);
+dist=dura/58.82;
+Serial.println(dist);
+  if(dist>=0 && dist<=20)
+  {
+    digitalWrite(2,LOW);
+  }
+  if(dist>=30)
+  {
+    digitalWrite(2,HIGH);
+  }
+  
+}
